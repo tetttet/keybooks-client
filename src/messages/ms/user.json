@@ -1,0 +1,73 @@
+{
+    "CreateBook": {
+        "title": "Cipta Buku",
+        "noCredits": "Anda tidak mempunyai kredit untuk mencipta buku.",
+        "remainingCredits": "Baki kredit:",
+        "yourBooks": "Buku Anda",
+        "targets": {
+            "mother": "Ibu",
+            "father": "Ayah",
+            "girlfriend": "Teman wanita",
+            "boyfriend": "Teman lelaki",
+            "colleague": "Rakan sekerja",
+            "friend": "Kawan",
+            "husband": "Suami",
+            "wife": "Isteri",
+            "parents": "Ibu bapa"
+        }
+    },
+    "QuestionsForm": {
+        "loading": "Memuat soalan...",
+        "yourAnswers": "Jawapan Anda",
+        "back": "Kembali",
+        "saveAndCharge": "Simpan dan tolak 1 kredit",
+        "questionXofY": "Soalan {current} daripada {total} untuk {target}",
+        "checkAnswers": "Semak Jawapan",
+        "next": "Seterusnya",
+        "targets": {
+            "mother": "Ibu",
+            "father": "Ayah",
+            "girlfriend": "Teman wanita",
+            "boyfriend": "Teman lelaki",
+            "colleague": "Rakan sekerja",
+            "friend": "Kawan",
+            "husband": "Suami",
+            "wife": "Isteri",
+            "parents": "Ibu bapa"
+        }
+    },
+    "ResponsesTable": {
+        "noBooks": "Anda belum mencipta sebarang buku lagi",
+        "toWhom": "Untuk siapa",
+        "questions": "Soalan",
+        "actions": "Tindakan",
+        "delete": "Padam",
+        "confirmDelete": "Adakah anda pasti mahu memadam buku ini?"
+    },
+    "upload": {
+        "dropzone": "Seret & lepas imej di sini atau klik untuk memilih",
+        "loading": "Memuat naik...",
+        "copy": "URL disalin!",
+        "deleteConfirm": "Adakah anda pasti mahu memadam imej ini?",
+        "deleteError": "Ralat memadam imej"
+    },
+    "images": {
+        "addTitle": "Tambah Foto",
+        "urlPlaceholder": "URL imej",
+        "descPlaceholder": "Penerangan (pilihan)",
+        "addButton": "Tambah",
+        "loading": "Sedang dimuat naik...",
+        "noImage": "Tiada imej",
+        "deleteConfirm": "Adakah anda pasti mahu memadam imej ini?",
+        "delete": "Padam",
+        "instructionsTitle": "Arahan memuat naik imej",
+        "instructions": [
+            "Anda boleh memuat naik imej daripada mana-mana hos, seperti Google Drive, Google Docs, Dropbox, dll.",
+            "Selepas memuat naik imej daripada Google Drive atau Google Docs, pastikan perkongsian fail diaktifkan supaya kami dapat memaparkannya.",
+            "Atau anda boleh menggunakan borang di atas untuk memuat naik imej terus ke perkhidmatan awan kami.",
+            "Tampalkan pautan imej ke dalam medan \"URL imej\".",
+            "(Pilihan) Tambahkan penerangan imej dalam medan \"Penerangan\".",
+            "Klik butang \"Tambah\" untuk menyimpan imej."
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "header": {
+        "dashboard": "Dashboard",
+        "about": "About Us",
+        "faq": "Frequently Asked Questions",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "contact": "Contact Us",
+        "switch_language": "EN"
+    }
+}

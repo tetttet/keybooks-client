@@ -1,0 +1,10 @@
+{
+  "footer": {
+    "description": "We create custom books — memories, stories, and important moments that will stay with you forever.",
+    "menu_title": "Menu",
+    "menu_items": ["About Us", "FAQ", "Privacy Policy", "Contact Us"],
+    "social_title": "Social",
+    "social_items": ["Instagram", "Telegram", "WhatsApp"],
+    "copyright": "All rights reserved."
+  }
+}

@@ -1,0 +1,73 @@
+{
+    "CreateBook": {
+        "title": "Create Book",
+        "noCredits": "You don't have credits to create a book.",
+        "remainingCredits": "Remaining credits:",
+        "yourBooks": "Your Books",
+        "targets": {
+            "mother": "Mother",
+            "father": "Father",
+            "girlfriend": "Girlfriend",
+            "boyfriend": "Boyfriend",
+            "colleague": "Colleague",
+            "friend": "Friend",
+            "husband": "Husband",
+            "wife": "Wife",
+            "parents": "Parents"
+        }
+    },
+    "QuestionsForm": {
+        "loading": "Loading questions...",
+        "yourAnswers": "Your Answers",
+        "back": "Back",
+        "saveAndCharge": "Save and deduct 1 credit",
+        "questionXofY": "Question {current} of {total} for {target}",
+        "checkAnswers": "Review Answers",
+        "next": "Next",
+        "targets": {
+            "mother": "Mother",
+            "father": "Father",
+            "girlfriend": "Girlfriend",
+            "boyfriend": "Boyfriend",
+            "colleague": "Colleague",
+            "friend": "Friend",
+            "husband": "Husband",
+            "wife": "Wife",
+            "parents": "Parents"
+        }
+    },
+    "ResponsesTable": {
+        "noBooks": "You haven't created any books yet",
+        "toWhom": "To whom",
+        "questions": "Questions",
+        "actions": "Actions",
+        "delete": "Delete",
+        "confirmDelete": "Are you sure you want to delete this book?"
+    },
+    "upload": {
+        "dropzone": "Drag & drop images here or click to select",
+        "loading": "Uploading...",
+        "copy": "URL copied!",
+        "deleteConfirm": "Are you sure you want to delete this image?",
+        "deleteError": "Error deleting image"
+    },
+      "images": {
+    "addTitle": "Add Photo",
+    "urlPlaceholder": "Image URL",
+    "descPlaceholder": "Description (optional)",
+    "addButton": "Add",
+    "loading": "Loading...",
+    "noImage": "No image",
+    "deleteConfirm": "Are you sure you want to delete this image?",
+    "delete": "Delete",
+    "instructionsTitle": "Image upload instructions",
+    "instructions": [
+      "You can upload images from any hosting service, such as Google Drive, Google Docs, Dropbox, etc.",
+      "After uploading images from Google Drive or Google Docs, make sure the file sharing is enabled so we can display them.",
+      "Alternatively, you can use the form above to upload your images directly to our cloud service.",
+      "Paste the image link into the \"Image URL\" field.",
+      "(Optional) Add an image description in the \"Description\" field.",
+      "Click the \"Add\" button to save the image."
+    ]
+  }
+}

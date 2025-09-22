@@ -1,0 +1,101 @@
+{
+    "About": {
+        "title": "Tentang KeyBooks",
+        "p1": "Di <strong>KeyBooks</strong>, kami percaya bahawa setiap cerita layak untuk diceritakan dengan cara yang indah dan abadi. Kami bersemangat untuk mencipta buku peribadi dan khas yang mencerminkan kenangan, idea, dan detik istimewa anda.",
+        "p2": "Sama ada hadiah penuh makna, buku cerita unik untuk kanak-kanak, koleksi kenangan keluarga, atau edisi profesional, pasukan pereka dan pencipta kami dengan teliti menghasilkan setiap buku dengan penuh perhatian dan cinta terhadap penceritaan.",
+        "p3": "Dari lakaran pertama hingga karya cetakan terakhir, kami memastikan visi anda menjadi nyata. Setiap halaman direka dengan teliti, setiap butiran diperhalusi — kerana kami tahu betapa pentingnya untuk mencipta bukan sekadar buku, tetapi kenangan yang kekal sepanjang hayat.",
+        "p4": "Misi kami mudah: untuk menjadikan idea anda sebuah buku yang memberi inspirasi, menghubungkan, dan membawa kegembiraan. Dengan <strong>KeyBooks</strong>, cerita anda menjadi seni.",
+        "tagline": "KeyBooks — Di Mana Cerita Anda Menjadi Sebuah Karya Agung."
+    },
+    "FAQ": {
+        "title": "Soalan Lazim",
+        "questions": {
+            "q1": {
+                "question": "Apa itu KeyBooks?",
+                "answer": "KeyBooks ialah perkhidmatan di mana kami mereka bentuk dan menghasilkan buku peribadi khas untuk anda — daripada buku cerita dan album foto hingga edisi profesional."
+            },
+            "q2": {
+                "question": "Berapa lama masa untuk menyiapkan buku khas?",
+                "answer": "Biasanya mengambil masa 1–2 minggu bergantung pada kerumitan dan saiz projek anda. Kami sentiasa memastikan reka bentuk dan cetakan berkualiti tinggi."
+            },
+            "q3": {
+                "question": "Bolehkah saya menghadiahkan projek KeyBooks?",
+                "answer": "Sudah tentu! Buku kami sangat sesuai sebagai hadiah bermakna untuk hari lahir, ulang tahun, perkahwinan, dan detik istimewa."
+            },
+            "q4": {
+                "question": "Adakah anda membuat penghantaran antarabangsa?",
+                "answer": "Ya, kami menawarkan penghantaran ke seluruh dunia supaya cerita anda boleh sampai kepada orang tersayang di mana sahaja."
+            },
+            "q5": {
+                "question": "Bagaimana cara untuk saya mula dengan buku khas saya?",
+                "answer": "Hubungi kami melalui laman web untuk berbincang tentang idea dan visi anda. Kami akan membimbing anda sepanjang proses dari awal hingga akhir."
+            },
+            "q6": {
+                "question": "Bagaimana jika saya perlukan bantuan dengan projek buku saya?",
+                "answer": "Pasukan kami sedia membantu! Anda boleh menghubungi kami pada bila-bila masa untuk mendapatkan panduan sama ada tentang konsep atau reka bentuk."
+            }
+        }
+    },
+    "Privacy": {
+        "title": "Privasi & Polisi",
+        "intro": "Di <strong>KeyBooks</strong>, kami menghormati privasi anda dan komited untuk melindungi data peribadi anda. Kami menggunakan teknologi selamat dan platform yang boleh dipercayai untuk memastikan maklumat anda sentiasa terjamin.",
+        "section1": {
+            "title": "Data Anda Dilindungi",
+            "desc": "Kami menggunakan penyulitan dan dasar akses yang ketat untuk memastikan data peribadi anda kekal peribadi dan selamat."
+        },
+        "cloud": {
+            "title": "Cloudinary",
+            "desc": "Kami menyimpan fail media (imej, dokumen) dengan selamat dalam awan Cloudinary."
+        },
+        "aws": {
+            "title": "Infrastruktur AWS",
+            "desc": "Perkhidmatan kami dijalankan di Amazon Web Services, memastikan skalabiliti dan kebolehpercayaan."
+        },
+        "db": {
+            "title": "PostgreSQL",
+            "desc": "Maklumat pengguna dan kandungan disimpan dalam pangkalan data hubungan yang selamat dengan kawalan akses ketat."
+        },
+        "policy": {
+            "title": "Polisi Telus",
+            "desc": "Anda sentiasa boleh meminta, mengemas kini, atau memadam data anda selaras dengan polisi privasi kami."
+        }
+    },
+    "Terms": {
+        "title": "Terma Perkhidmatan",
+        "intro": "Selamat datang ke <strong>KeyBooks</strong>. Dengan menggunakan perkhidmatan kami, anda bersetuju dengan terma dan syarat berikut yang direka untuk memastikan keadilan, kepercayaan, dan keselamatan untuk setiap pengguna.",
+        "fairUse": {
+            "title": "Penggunaan Adil",
+            "desc": "Perkhidmatan kami disediakan untuk kegunaan peribadi dan profesional. Sebarang penyalahgunaan, pengedaran tanpa kebenaran, atau aktiviti haram adalah dilarang sama sekali."
+        },
+        "responsibility": {
+            "title": "Tanggungjawab Pengguna",
+            "desc": "Anda bertanggungjawab ke atas ketepatan maklumat yang anda berikan dan mesti memastikan kandungan yang dimuat naik tidak melanggar hak orang lain."
+        },
+        "availability": {
+            "title": "Ketersediaan Perkhidmatan",
+            "desc": "Kami berusaha untuk menyediakan akses tanpa gangguan, tetapi penyelenggaraan atau kemas kini sekali-sekala mungkin menjejaskan ketersediaan."
+        },
+        "privacy": {
+            "title": "Privasi & Keselamatan",
+            "desc": "Data anda dikendalikan dengan teliti. Sila rujuk <a href='/privacy-policy'>Polisi Privasi</a> kami untuk maklumat lanjut tentang cara data anda disimpan dan dilindungi."
+        },
+        "conclusion": "Dengan terus menggunakan platform kami, anda bersetuju untuk mematuhi terma ini. Kami mungkin mengemas kini dari semasa ke semasa, jadi sila semak halaman ini dengan kerap."
+    },
+    "Contact": {
+        "title": "Hubungi Kami",
+        "tabs": {
+            "whatsapp": "WhatsApp",
+            "others": "Pautan Lain"
+        },
+        "whatsapp": {
+            "description": "Imbas kod QR di bawah atau klik butang untuk memulakan chat dengan kami di WhatsApp.",
+            "button": "Chat di WhatsApp"
+        },
+        "others": {
+            "email": "E-mel",
+            "telegram": "Telegram",
+            "instagram": "Instagram",
+            "livechat": "Chat Langsung"
+        }
+    }
+}

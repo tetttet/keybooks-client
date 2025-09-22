@@ -1,0 +1,70 @@
+{
+    "button": {
+        "orderNow": "Pesan Sekarang",
+        "prize": "Berikan hadiah yang akan diingat selama berabad-abad"
+    },
+    "hero": {
+        "title": "Dedikasikan buku ini untuk",
+        "subtitle": "Berikan buku unik dengan dedikasi pribadi yang akan menjadi harta tak ternilai bagi orang-orang tercinta dan teman-teman Anda."
+    },
+    "heroVideo": {
+        "title": "Buku peribadi",
+        "subtitle": "Rasa seperti pengarang dan gembirakan orang yang anda sayangi!"
+    },
+    "step": {
+        "stepOne": {
+            "title": "Buku kami dalam format wawancara.",
+            "subtitle": "Pertama, anda perlu log masuk ke akaun peribadi anda dan pilih penerima anda.",
+            "header": "Pilih penerima"
+        },
+        "stepTwo": {
+            "title": "Mari kita mulakan dengan sampul buku masa depan anda.",
+            "subtitle": "Lebih dari sepuluh reka bentuk yang berbeza, keupayaan untuk memasukkan tajuk buku dan menunjukkan pengarang.",
+            "header": "Sampul buku",
+            "bookName": "Tajuk buku",
+            "bookPlaceholder": "Masukkan tajuk buku",
+            "author": "Pengarang",
+            "authorPlaceholder": "Masukkan nama pengarang",
+            "designs": "Lebih dari sepuluh reka bentuk yang berbeza untuk dipilih",
+            "designAlt": "Reka bentuk sampul buku"
+        },
+        "stepThree": {
+            "title": "Anda perlu menjawab soalan di pejabat",
+            "subtitle": "Terdapat kira-kira 200 soalan, tetapi anda tidak perlu menjawab semuanya; perkara utama adalah untuk mengisi 150-200 halaman.",
+            "header": "Jawab soalan",
+            "questions": "Ceritakan tentang saat yang mengesahkan betapa sempurnanya anda untuk satu sama lain?",
+            "answer": "Jawapan anda akan muncul di sini...",
+            "answerPlaceholder": "Taip jawapan anda di sini...",
+            "page": "Halaman 15"
+        },
+        "stepFour": {
+            "title": "Anda juga boleh menambah foto",
+            "subtitle": "Simpan kenangan bersama dalam bentuk foto, tarikh dan keterangan.",
+            "header": "Foto dan keterangan",
+            "notChoosen": "Tiada foto dipilih",
+            "data": "Tarikh",
+            "description": "Keterangan",
+            "descriptionPlaceholder": "Masukkan keterangan",
+            "addPhoto": "Tambah foto"
+        }
+    },
+    "login": {
+        "title": "Log masuk ke akaun anda",
+        "username": "Nama pengguna",
+        "usernamePlaceholder": "Masukkan nama pengguna anda",
+        "password": "Kata laluan",
+        "passwordPlaceholder": "Masukkan kata laluan anda",
+        "loginButton": "Log masuk",
+        "loading": "Sedang log masuk..."
+    },
+    "user" : {
+        "usercard": {
+            "title": "Papan Pemuka Pengguna",
+            "subtitle": "Urus akaun anda, lihat kredit dan aktiviti",
+            "hello": "Halo, ",
+            "yourCredits": "Anda kini mempunyai ",
+            "credits": " kredit",
+            "logoutButton": "Log Keluar"
+        }
+    }
+}

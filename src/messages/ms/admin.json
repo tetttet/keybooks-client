@@ -1,0 +1,59 @@
+{
+    "AdminCard": {
+        "title": "Panel Pentadbir",
+        "description": "Uruskan pengguna, kandungan, dan tetapan",
+        "welcome": "Selamat datang, {username}! Anda mempunyai akses pentadbiran penuh.",
+        "dashboardBtn": "Pergi ke Papan Pemuka Pentadbir",
+        "logoutBtn": "Log Keluar"
+    },
+    "CreateUser": {
+        "form": {
+            "title": "Cipta Pengguna",
+            "username": "Nama pengguna",
+            "password": "Kata laluan",
+            "role": "Peranan",
+            "rolePlaceholder": "Pilih peranan",
+            "credit": "Kredit",
+            "create": "Cipta",
+            "creating": "Mencipta..."
+        },
+        "roles": {
+            "user": "Pengguna",
+            "admin": "Pentadbir"
+        },
+        "table": {
+            "title": "Semua Pengguna",
+            "id": "ID",
+            "username": "Nama pengguna",
+            "role": "Peranan",
+            "credit": "Kredit",
+            "actions": "Tindakan"
+        },
+        "messages": {
+            "userCreated": "Pengguna {username} telah dicipta!",
+            "userDeleted": "Pengguna \"{username}\" telah dipadam"
+        },
+        "errors": {
+            "fetchUsers": "Gagal memuatkan pengguna",
+            "emptyFields": "Masukkan nama pengguna dan kata laluan",
+            "createUser": "Gagal mencipta pengguna",
+            "deleteUser": "Gagal memadam pengguna"
+        },
+        "confirmDelete": "Adakah anda pasti mahu memadam pengguna \"{username}\"?"
+    },
+    "AllResponses": {
+        "title": "Semua Jawapan Pengguna",
+        "confirmDelete": "Adakah anda pasti mahu memadam jawapan ini?"
+    },
+    "ResponseTable": {
+        "user": "Pengguna",
+        "target": "Penerima",
+        "questions": "Soalan",
+        "images": "Imej",
+        "actions": "Tindakan",
+        "loading": "Memuatkan...",
+        "noImages": "Tiada imej",
+        "delete": "Padam",
+        "downloadPDF": "Muat turun PDF"
+    }
+}

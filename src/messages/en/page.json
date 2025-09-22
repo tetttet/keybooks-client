@@ -1,0 +1,101 @@
+{
+    "About": {
+        "title": "About KeyBooks",
+        "p1": "At <strong>KeyBooks</strong>, we believe that every story deserves to be told in a beautiful and timeless way. We are passionate about creating personalized and custom-made books that reflect your memories, ideas, and special moments.",
+        "p2": "Whether it’s a heartfelt gift, a unique storybook for children, a collection of family memories, or even a professional edition, our team of designers and creators carefully crafts each book with attention to detail and love for storytelling.",
+        "p3": "From the very first sketch to the final printed masterpiece, we ensure that your vision comes to life. Every page is thoughtfully designed, every detail refined — because we know how important it is to create not just a book, but a keepsake that lasts a lifetime.",
+        "p4": "Our mission is simple: to turn your ideas into books that inspire, connect, and bring joy. With <strong>KeyBooks</strong>, your story becomes art.",
+        "tagline": "KeyBooks — Where Your Story Becomes a Masterpiece."
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions",
+        "questions": {
+            "q1": {
+                "question": "What is KeyBooks?",
+                "answer": "KeyBooks is a service where we design and create personalized books tailored just for you — from storybooks and photo albums to professional editions."
+            },
+            "q2": {
+                "question": "How long does it take to create a custom book?",
+                "answer": "Typically, it takes 1–2 weeks depending on the complexity and size of your project. We always ensure top-quality design and printing."
+            },
+            "q3": {
+                "question": "Can I gift a KeyBooks project?",
+                "answer": "Absolutely! Our books are perfect as thoughtful gifts for birthdays, anniversaries, weddings, and special moments."
+            },
+            "q4": {
+                "question": "Do you ship internationally?",
+                "answer": "Yes, we offer worldwide shipping so your story can reach loved ones anywhere in the world."
+            },
+            "q5": {
+                "question": "How do I get started with my custom book?",
+                "answer": "Simply contact us through our website to discuss your ideas and vision. We’ll guide you through the process from start to finish."
+            },
+            "q6": {
+                "question": "What if I need help with my book project?",
+                "answer": "Our team is here to help! You can reach out to us anytime for assistance, whether you need guidance on your concept or help with the design process."
+            }
+        }
+    },
+    "Privacy": {
+        "title": "Privacy & Policy",
+        "intro": "At <strong>KeyBooks</strong>, we respect your privacy and are committed to protecting your personal data. We use secure technologies and reliable platforms to ensure that your information is always safe.",
+        "section1": {
+            "title": "Your Data is Protected",
+            "desc": "We apply encryption and strict access policies to keep your personal data private and secure."
+        },
+        "cloud": {
+            "title": "Cloudinary",
+            "desc": "We securely store media files (images, documents) in Cloudinary cloud."
+        },
+        "aws": {
+            "title": "AWS Infrastructure",
+            "desc": "Our services run on Amazon Web Services, ensuring scalability and reliability."
+        },
+        "db": {
+            "title": "PostgreSQL",
+            "desc": "User information and content are stored in a secure relational database with strict access control."
+        },
+        "policy": {
+            "title": "Transparent Policy",
+            "desc": "You can always request, update, or delete your data in accordance with our privacy policy."
+        }
+    },
+    "Terms": {
+        "title": "Terms of Service",
+        "intro": "Welcome to <strong>KeyBooks</strong>. By using our services, you agree to the following terms and conditions, designed to ensure fairness, trust, and security for every user.",
+        "fairUse": {
+            "title": "Fair Use",
+            "desc": "Our services are provided for personal and professional use. Any misuse, unauthorized distribution, or unlawful activity is strictly prohibited."
+        },
+        "responsibility": {
+            "title": "User Responsibility",
+            "desc": "You are responsible for the accuracy of information you provide and must ensure that uploaded content does not violate the rights of others."
+        },
+        "availability": {
+            "title": "Service Availability",
+            "desc": "We strive to provide uninterrupted access, but occasional maintenance or updates may temporarily affect availability."
+        },
+        "privacy": {
+            "title": "Privacy & Security",
+            "desc": "Your data is handled with care. Please refer to our <a href='/privacy-policy'>Privacy Policy</a> for details about how your information is stored and protected."
+        },
+        "conclusion": "By continuing to use our platform, you agree to comply with these terms. We may update them from time to time, so please check this page regularly."
+    },
+    "Contact": {
+        "title": "Contact Us",
+        "tabs": {
+            "whatsapp": "WhatsApp",
+            "others": "Other Links"
+        },
+        "whatsapp": {
+            "description": "Scan the QR code below or click the button to start a chat with us on WhatsApp.",
+            "button": "Chat on WhatsApp"
+        },
+        "others": {
+            "email": "Email",
+            "telegram": "Telegram",
+            "instagram": "Instagram",
+            "livechat": "Live Chat"
+        }
+    }
+}

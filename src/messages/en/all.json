@@ -1,0 +1,70 @@
+{
+    "button": {
+        "orderNow": "Order Now",
+        "prize": "Give a gift that will be remembered for centuries"
+    },
+    "hero": {
+        "title": "Dedicate the book to",
+        "subtitle": "Give a unique book with a personalized dedication that will become a priceless treasure for your loved ones and friends."
+    },
+    "heroVideo": {
+        "title": "Personalized Book",
+        "subtitle": "Feel like an author and delight your loved ones!"
+    },
+    "step": {
+        "stepOne": {
+            "title": "Our books are in interview format.",
+            "subtitle": "First, you need to log into your personal account and select your recipient.",
+            "header": "Select recipient"
+        },
+        "stepTwo": {
+            "title": "Let's start with the cover of your future book.",
+            "subtitle": "More than ten different designs, the ability to enter the book title and indicate the author.",
+            "header": "Book cover",
+            "bookName": "Book title",
+            "bookPlaceholder": "Enter the title of the book",
+            "author": "Author",
+            "authorPlaceholder": "Enter the author's name",
+            "designs": "More than ten different designs to choose from",
+            "designAlt": "Book cover design"
+        },
+        "stepThree": {
+            "title": "You need to answer questions in the office",
+            "subtitle": "There are about 200 questions, but you don't have to answer them all; the main thing is to fill out 150–200 pages.",
+            "header": "Answer questions",
+            "questions": "Tell us about a moment that confirmed how perfect you are for each other?",
+            "answer": "Your answer will appear here...",
+            "answerPlaceholder": "Type your answer here...",
+            "page": "15 Page"
+        },
+        "stepFour": {
+            "title": "You can also add photos",
+            "subtitle": "Save shared memories in the form of a photo, date and description.",
+            "header": "Photo and description",
+            "notChoosen": "No photo chosen",
+            "data": "Date",
+            "description": "Description",
+            "descriptionPlaceholder": "Enter description",
+            "addPhoto": "Add photo"
+        }
+    },
+    "login": {
+        "title": "Login to your account",
+        "username": "Username",
+        "usernamePlaceholder": "Enter your username",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "loginButton": "Login",
+        "loading": "Logging in..."
+    },
+    "user" : {
+        "usercard": {
+            "title": "User Dashboard",
+            "subtitle": "Manage your account, view credits and activities",
+            "hello": "Hello, ",
+            "yourCredits": "You currently have ",
+            "credits": " credits",
+            "logoutButton": "Logout"
+        }
+    }
+}
