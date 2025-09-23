@@ -28,14 +28,14 @@ const Hero = () => {
         src="/bg/bg.png"
         alt="Background"
         fill
-        className="object-cover"
+        className="object-cover object-[46%] sm:object-center"
         priority
       />
 
       {/* Контент */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 px-4 mt-40 md:mt-52">
         {/* Основной текст */}
-        <h1 className="text-3xl md:text-4xl font-medium text-white">
+        <h1 className="max-w-[250px] lg:max-w-full text-xl md:text-4xl font-medium text-white">
           {t("title")}{" "}
           <AnimatePresence mode="wait">
             <motion.span
@@ -44,13 +44,14 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5 }}
-              className="text-pink-300"
             >
               {data[index]}
             </motion.span>
           </AnimatePresence>
         </h1>
-        <p className="text-white max-w-2xl">{t("subtitle")}</p>
+        <p className="max-w-[260px] lg:max-w-full text-white text-[11px] lg:text-[16px]">
+          {t("subtitle")}
+        </p>
 
         {/* Кнопка */}
         <OrderButton className="py-5 px-5 text-sm -mt-3" />

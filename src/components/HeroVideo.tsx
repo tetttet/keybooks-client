@@ -19,17 +19,15 @@ const HeroVideo = () => {
       </div>
 
       {/* Заголовок */}
-      <h1 className="text-2xl md:text-4xl font-bold mb-2">
-        {t("title")}
-      </h1>
+      <h1 className="text-2xl md:text-4xl  mb-2">{t("title")}</h1>
 
       {/* Подзаголовок */}
-      <p className="text-gray-600 text-base md:text-lg mb-6 max-w-xl">
+      <p className="text-gray-600 max-w-[260px] lg:max-w-full text-[14px] lg:text-[16px] mb-2">
         {t("subtitle")}
       </p>
 
       {/* Кнопка */}
-      <OrderButton className="bg-black text-white py-5 px-4" />
+      <OrderButton className="bg-[#141a27] text-white py-5 px-4" />
     </div>
   );
 };

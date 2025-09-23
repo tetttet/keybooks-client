@@ -33,7 +33,7 @@ const Header = () => {
       }`}
     >
       <div className="flex justify-between items-center px-6 py-3">
-        <div className="font-serif text-lg text-white mt-2">
+        <div className="text-lg text-white mt-2">
           <Link href={`/${locale}`}>keybooks</Link>
         </div>
 
