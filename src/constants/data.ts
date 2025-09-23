@@ -41,5 +41,5 @@ export const MS_coverDesigns: { name: string; gradient: string }[] = [
   { name: "Gelap", gradient: "from-gray-700 to-gray-900" },
 ];
 
-export const whatsappNumber = "77075356168";
+export const whatsappNumber = "60165777740";
 export const API_URL = "https://keybooks-server.vercel.app/api";
