@@ -17,13 +17,11 @@ const StepThree = () => {
 
       {/* Карточка */}
       <Container>
-        <h3 className="text-base font-medium mb-2 text-left">
-          {t("header")}
-          </h3>
+        <h3 className="text-base font-medium mb-2 text-left">{t("header")}</h3>
 
         {/* Превью страницы */}
-        <div className="px-28 py-10 bg-[#131927] h-[350px] flex items-center justify-center">
-          <div className="bg-white h-[300px] shadow-md max-w-md w-full flex flex-col justify-between p-6">
+        <div className="px-4 sm:px-10 lg:px-28 py-10 bg-[#131927] h-[350px] flex items-center justify-center">
+          <div className="bg-white h-[300px] shadow-md w-full max-w-lg flex flex-col justify-between p-6">
             <p className="text-gray-800 font-medium text-[6px]">
               {t("questions")}
             </p>
