@@ -35,7 +35,9 @@
             "questions": "Tell us about a moment that confirmed how perfect you are for each other?",
             "answer": "Your answer will appear here...",
             "answerPlaceholder": "Type your answer here...",
-            "page": "15 Page"
+            "page": "15 Page",
+            "question": "Question 14",
+            "anw": "Answer"
         },
         "stepFour": {
             "title": "You can also add photos",

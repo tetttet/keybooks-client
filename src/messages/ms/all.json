@@ -35,7 +35,9 @@
             "questions": "Ceritakan tentang saat yang mengesahkan betapa sempurnanya anda untuk satu sama lain?",
             "answer": "Jawapan anda akan muncul di sini...",
             "answerPlaceholder": "Taip jawapan anda di sini...",
-            "page": "Halaman 15"
+            "page": "Halaman 15",
+            "question": "Soalan 14",
+            "anw": "Jawapan"
         },
         "stepFour": {
             "title": "Anda juga boleh menambah foto",
