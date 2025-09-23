@@ -19,10 +19,10 @@ const HeroVideo = () => {
       </div>
 
       {/* Заголовок */}
-      <h1 className="text-2xl md:text-4xl  mb-2">{t("title")}</h1>
+      <h1 className="text-2xl md:text-3xl  mb-2">{t("title")}</h1>
 
       {/* Подзаголовок */}
-      <p className="text-gray-600 max-w-[260px] lg:max-w-full text-[14px] lg:text-[16px] mb-2">
+      <p className="text-gray-600 max-w-[260px] lg:max-w-full text-[14px] lg:text-[14px] mb-2">
         {t("subtitle")}
       </p>
 

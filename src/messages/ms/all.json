@@ -47,7 +47,9 @@
             "data": "Tarikh",
             "description": "Keterangan",
             "descriptionPlaceholder": "Masukkan keterangan",
-            "addPhoto": "Tambah foto"
+            "addPhoto": "Foto",
+            "datePlaceholder": "Masukkan tarikh",
+            "chooseFile": "Pilih fail"
         }
     },
     "login": {

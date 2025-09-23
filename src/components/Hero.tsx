@@ -35,7 +35,7 @@ const Hero = () => {
       {/* Контент */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 px-4 mt-40 md:mt-52">
         {/* Основной текст */}
-        <h1 className="max-w-[250px] lg:max-w-full text-xl md:text-4xl font-medium text-white">
+        <h1 className="max-w-[250px] lg:max-w-full text-xl md:text-3xl font-medium text-white">
           {t("title")}{" "}
           <AnimatePresence mode="wait">
             <motion.span
@@ -49,7 +49,7 @@ const Hero = () => {
             </motion.span>
           </AnimatePresence>
         </h1>
-        <p className="max-w-[260px] lg:max-w-full text-white text-[11px] lg:text-[16px]">
+        <p className="max-w-[260px] lg:max-w-full text-white text-[11px] lg:text-[12px]">
           {t("subtitle")}
         </p>
 

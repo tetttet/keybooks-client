@@ -18,7 +18,7 @@ const Prize = () => {
       />
 
       {/* Текст */}
-      <h1 className="text-center mt-4 text-2xl md:text-4xl font-medium text-white">
+      <h1 className="text-center mt-4 text-2xl md:text-3xl font-medium text-white max-w-xs lg:max-w-2xl">
         {t("prize")}
       </h1>
 

@@ -35,12 +35,15 @@ const StepTwo = () => {
 
         {/* Превью обложки */}
         <div
-          className={`w-full aspect-[3/4] rounded-xl flex flex-col items-center justify-center text-center shadow-lg mb-6 bg-gradient-to-b ${design.gradient}`}
+          className="w-full aspect-[3/4] rounded-xl flex flex-col items-center justify-center text-center shadow-lg mb-6 bg-cover bg-center"
+          style={{ backgroundImage: `url(${design.image})` }}
         >
-          <h1 className="text-xl font-bold text-black px-4">
-            {title || t("bookName")}
+          <h1 className="text-xl font-bold text-black px-4 bg-white/70 rounded">
+            {title || ""}
           </h1>
-          <p className="text-sm text-black mt-2">{author || t("author")}</p>
+          <p className="text-sm text-black mt-2 bg-white/70 rounded px-2">
+            {author || ""}
+          </p>
         </div>
 
         {/* Форма */}

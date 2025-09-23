@@ -9,7 +9,6 @@ export const recipients = [
   "Brother",
   "Friend",
   "Colleague",
-  "Mentor",
   "Other",
 ];
 
@@ -24,21 +23,20 @@ export const MS_recipients = [
   "Abang",
   "Kawan",
   "Rakan sekerja",
-  "Mentor",
   "Lain-lain",
 ];
 
-export const coverDesigns: { name: string; gradient: string }[] = [
-  { name: "Бело-голубой", gradient: "from-blue-50 to-blue-200" },
-  { name: "Золотой", gradient: "from-yellow-100 to-yellow-300" },
-  { name: "Розовый", gradient: "from-pink-100 to-pink-300" },
-  { name: "Тёмный", gradient: "from-gray-700 to-gray-900" },
+export const coverDesigns: { name: string; image: string }[] = [
+  { name: "Бело-голубой", image: "/bg/1.png" },
+  { name: "Золотой", image: "/bg/2.png" },
+  { name: "Розовый", image: "/bg/3.png" },
+  { name: "Тёмный", image: "/bg/4.png" },
 ];
-export const MS_coverDesigns: { name: string; gradient: string }[] = [
-  { name: "Biru Muda", gradient: "from-blue-50 to-blue-200" },
-  { name: "Emas", gradient: "from-yellow-100 to-yellow-300" },
-  { name: "Merah Jambu", gradient: "from-pink-100 to-pink-300" },
-  { name: "Gelap", gradient: "from-gray-700 to-gray-900" },
+export const MS_coverDesigns: { name: string; image: string }[] = [
+  { name: "Biru Muda", image: "/bg/1.png" },
+  { name: "Emas", image: "/bg/2.png" },
+  { name: "Merah Jambu", image: "/bg/3.png" },
+  { name: "Gelap", image: "/bg/4.png" },
 ];
 
 export const whatsappNumber = "60165777740";

@@ -47,7 +47,9 @@
             "data": "Date",
             "description": "Description",
             "descriptionPlaceholder": "Enter description",
-            "addPhoto": "Add photo"
+            "addPhoto": "Photo",
+            "datePlaceholder": "Enter date",
+            "chooseFile": "Choose a file"
         }
     },
     "login": {

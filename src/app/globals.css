@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -140,10 +141,29 @@
   font-display: swap;
 }
 
-body {
+/* body {
   font-family:"TT Drugs Trial", sans-serif;
 }
 
 h1, h2, h3 {
   font-family: "TT Drugs Trial", sans-serif;
+} */
+
+/* Скрытие скроллбара для всех браузеров */
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body {
+  font-family: "PT Serif", serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "PT Serif", serif;
 }

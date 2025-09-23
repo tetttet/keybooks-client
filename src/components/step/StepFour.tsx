@@ -31,16 +31,23 @@ const StepFour = () => {
         <h3 className="text-base font-medium mb-4">{t("header")}</h3>
 
         {/* Превью фото */}
-        <div className="relative w-full aspect-[4/3] bg-white rounded-xl shadow-md flex items-center justify-center overflow-hidden mb-6">
+        <div className="relative w-full aspect-[4/3] bg-[#131927] rounded-xl shadow-md flex items-center justify-center overflow-hidden mb-6">
           {image ? (
             <Image
-              fill
+              width={300}
+              height={200}
               src={image}
               alt="Preview"
-              className="w-full h-full object-cover"
+              className="w-56 h-[60vh] object-contain"
             />
           ) : (
-            <span className="text-gray-400 text-sm">{t("notChoosen")}</span>
+            <Image
+              width={300}
+              height={200}
+              src={"/bg/bgbg.png"}
+              alt="Preview"
+              className="w-56 h-[60vh] object-contain"
+            />
           )}
 
           {/* Наложение текста */}
@@ -57,12 +64,14 @@ const StepFour = () => {
           <div>
             <Label className="mb-2">{t("data")}</Label>
             <Input
-              type="date"
+              type="text"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              placeholder={t("datePlaceholder")}
               className="mt-1"
             />
           </div>
+
           <div>
             <Label className="mb-2">{t("description")}</Label>
             <Input
@@ -73,14 +82,23 @@ const StepFour = () => {
               className="mt-1"
             />
           </div>
-          <div>
+          <div className="">
             <Label className="mb-2">{t("addPhoto")}</Label>
-            <Input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="mt-1"
-            />
+            <div className="mt-1">
+              <input
+                id="fileUpload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+              <label
+                htmlFor="fileUpload"
+                className="cursor-pointer bg-[#4b5464] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#404856] w-full text-center block"
+              >
+                {t("chooseFile")}
+              </label>
+            </div>
           </div>
         </div>
       </Container>
