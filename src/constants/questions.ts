@@ -8,8 +8,8 @@ interface Question {
 // utils/loadQuestions.ts
 export async function loadQuestions(fileName: string): Promise<Question[]> {
   try {
-    const res = await fetch(`${NEXT_URL}/questions/${fileName}`);
-    console.log("Fetching questions from:", `${NEXT_URL}/questions/${fileName}`);
+    const res = await fetch(`${NEXT_URL}/questions/${fileName.toLowerCase()}`);
+    console.log("Fetching questions from:", `${NEXT_URL}/questions/${fileName.toLowerCase()}`);
     const text = await res.text();
     return text
       .split("\n")
