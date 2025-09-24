@@ -44,6 +44,10 @@ export const ResponsesProvider = ({ children }: { children: ReactNode }) => {
   // Получить ответы конкретного пользователя
   const fetchResponses = async (userId: string) => {
     const res = await fetch(`${API_URL}/responses?user_id=${userId}`);
+    if (!res.ok) {
+      setResponses([]);
+      return;
+    }
     const data = await res.json();
     setResponses(data);
   };

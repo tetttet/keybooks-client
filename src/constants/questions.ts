@@ -1,3 +1,5 @@
+import { QuestionAnswer } from "@/context/ResponsesContext";
+
 interface Question {
   id: number;
   question: string;
@@ -16,3 +18,40 @@ export async function loadQuestions(fileName: string): Promise<Question[]> {
     return [];
   }
 }
+
+
+export interface PropsInterface {
+  target:
+    | "mother"
+    | "father"
+    | "girlfriend"
+    | "boyfriend"
+    | "colleague"
+    | "friend"
+    | "husband"
+    | "wife"
+    | "parents";
+  onClose: () => void;
+  answers: QuestionAnswer[];
+  setAnswers: (
+    value: QuestionAnswer[] | ((prev: QuestionAnswer[]) => QuestionAnswer[])
+  ) => void;
+  createResponse: (
+    user_id: string,
+    target: string,
+    data: { questions: QuestionAnswer[] }
+  ) => Promise<void>;
+  onCreated?: () => void;
+  user_id: string;
+}
+export const TARGET_FILES: Record<string, string> = {
+  girlfriend: "girlfriend.txt",
+  boyfriend: "boyfriend.txt",
+  mother: "mother.txt",
+  father: "father.txt",
+  colleague: "colleague.txt",
+  friend: "friend.txt",
+  husband: "husband.txt",
+  wife: "wife.txt",
+  parents: "parents.txt",
+};

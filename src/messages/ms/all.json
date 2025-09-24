@@ -26,7 +26,9 @@
             "author": "Pengarang",
             "authorPlaceholder": "Masukkan nama pengarang",
             "designs": "Lebih dari sepuluh reka bentuk yang berbeza untuk dipilih",
-            "designAlt": "Reka bentuk sampul buku"
+            "designAlt": "Reka bentuk sampul buku",
+            "createABook": "Buat Buku",
+            "creating": "Sedang membuat..."
         },
         "stepThree": {
             "title": "Anda perlu menjawab soalan di pejabat",
@@ -37,7 +39,15 @@
             "answerPlaceholder": "Taip jawapan anda di sini...",
             "page": "Halaman 15",
             "question": "Soalan 14",
-            "anw": "Jawapan"
+            "anw": "Jawapan",
+            "addImage": "Anda juga boleh menambah foto pada jawapan anda",
+            "descPlaceholder": "Masukkan keterangan",
+            "addButton": "Tambah Foto",
+            "imagesSummary": "Foto yang ditambahkan",
+            "urlPlaceholder": "URL Gambar",
+            "delete": "Buang",
+            "dragDropOrClick": "Seret & lepaskan gambar di sini atau klik untuk memilih",
+            "chooseFile": "Pilih fail"
         },
         "stepFour": {
             "title": "Anda juga boleh menambah foto",
@@ -61,7 +71,7 @@
         "loginButton": "Log masuk",
         "loading": "Sedang log masuk..."
     },
-    "user" : {
+    "user": {
         "usercard": {
             "title": "Papan Pemuka Pengguna",
             "subtitle": "Urus akaun anda, lihat kredit dan aktiviti",
@@ -70,5 +80,25 @@
             "credits": " kredit",
             "logoutButton": "Log Keluar"
         }
+    },
+    "createBook": {
+        "title": "Buat Buku Baru",
+        "stepChooseTarget": "Pilih Penerima",
+        "chooseRecipient": "Pilih penerima",
+        "stepCreateBook": "Buat Buku",
+        "stepResponses": "Respon",
+        "back": "← Kembali",
+        "backToBook": "← Kembali ke Buat Buku",
+        "done": "Selesai"
+    },
+    "responsesForm": {
+        "check": "Semak jawapan anda",
+        "back": "kembali",
+        "saveAndDeduct": "Simpan dan tolak kredit",
+        "ans": "Jawapan",
+        "ansPlaceholder": "Taip jawapan anda di sini...",
+        "next": "Seterusnya",
+        "loading": "Memuatkan...",
+        "dropOrChoose": "Seret & lepaskan gambar di sini atau klik untuk memilih"
     }
 }

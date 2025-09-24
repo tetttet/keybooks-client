@@ -6,10 +6,10 @@ import LoginPage from "@/components/auth/Login";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { UserCard } from "@/components/user/UserCard";
 import CreateUser from "@/components/admin/CreateUser";
-import CreateBook from "@/components/user/CreateBook";
 import AllResponses from "@/components/admin/ResponsesList";
-import { UserImagesForm } from "@/components/user/UserImagesForm";
-import UserImageForm from "@/components/user/UserImageForm";
+import CreateFlow from "@/components/create/CreateFlow";
+import UserBooksGallery from "@/components/UserBooksGallery";
+import AdminGallery from "@/components/AdminGallery";
 
 const DashboardPage: React.FC = () => {
   const { user, logout, refreshUser } = useAuth();
@@ -25,14 +25,21 @@ const DashboardPage: React.FC = () => {
         <>
           <AdminCard username={user.username} logout={logout} />
           <CreateUser />
-          <AllResponses />
+          <AdminGallery />
         </>
       ) : (
         <>
           <UserCard user={user} logout={logout} />
-          <CreateBook user={user} refreshUser={refreshUser} />
-          <UserImageForm />
-          <UserImagesForm />
+          {user.credit > 0 ? (
+            <>
+              <CreateFlow user={user} refreshUser={refreshUser} />
+              <UserBooksGallery user_id={user.id} />
+            </>
+          ) : (
+            <div className="mt-4 p-4 bg-red-200 text-red-800 rounded">
+              У вас нет доступных кредитов. Пожалуйста, свяжитесь с администратором для пополнения.
+            </div>
+          )}
         </>
       )}
     </div>

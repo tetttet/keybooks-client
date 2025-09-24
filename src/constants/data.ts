@@ -5,34 +5,34 @@ export const recipients = [
   "Husband",
   "Mother",
   "Father",
-  "Sister",
   "Brother",
   "Friend",
   "Colleague",
-  "Other",
 ];
 
 export const MS_recipients = [
-  "Pacar",
-  "Teman lelaki",
+  "Teman Wanita",
+  "Teman Lelaki",
   "Isteri",
   "Suami",
   "Ibu",
   "Bapa",
-  "Kakak",
   "Abang",
   "Kawan",
-  "Rakan sekerja",
-  "Lain-lain",
+  "Rakan Sekerja",
 ];
 
-export const coverDesigns: { name: string; image: string }[] = [
+export interface Target {
+  name: string;
+  image: string;
+}
+export const coverDesigns: Target[] = [
   { name: "Бело-голубой", image: "/bg/1.png" },
   { name: "Золотой", image: "/bg/2.png" },
   { name: "Розовый", image: "/bg/3.png" },
   { name: "Тёмный", image: "/bg/4.png" },
 ];
-export const MS_coverDesigns: { name: string; image: string }[] = [
+export const MS_coverDesigns: Target[] = [
   { name: "Biru Muda", image: "/bg/1.png" },
   { name: "Emas", image: "/bg/2.png" },
   { name: "Merah Jambu", image: "/bg/3.png" },

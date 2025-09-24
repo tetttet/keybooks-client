@@ -29,10 +29,10 @@ const StepOne = () => {
               key={idx}
               onClick={() => setSelected(item)}
               className={cn(
-                "w-full text-sm font-normal border border-white/20 transition-colors hover:bg-transparent hover:text-white",
+                "w-full text-sm font-normal border border-white/20 hover:bg-transparent hover:text-white",
                 selected === item
-                  ? "bg-white text-black"
-                  : "bg-transparent text-white hover:bg-transparent"
+                  ? "bg-white text-black transition-none"
+                  : "bg-transparent text-white transition-none"
               )}
             >
               {item}

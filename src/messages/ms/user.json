@@ -22,6 +22,7 @@
         "back": "Kembali",
         "saveAndCharge": "Simpan dan tolak 1 kredit",
         "questionXofY": "Soalan {current} daripada {total} untuk {target}",
+        "page": "{current} Muka surat",
         "checkAnswers": "Semak Jawapan",
         "next": "Seterusnya",
         "targets": {
@@ -34,7 +35,12 @@
             "husband": "Suami",
             "wife": "Isteri",
             "parents": "Ibu bapa"
-        }
+        },
+        "addPhoto": "Tambah Foto",
+        "add": "Tambah",
+        "delete": "Buang",
+        "image": "Imej",
+        "description": "Penerangan"
     },
     "ResponsesTable": {
         "noBooks": "Anda belum mencipta sebarang buku lagi",
