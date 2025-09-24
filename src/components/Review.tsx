@@ -1,4 +1,5 @@
 import { Instagram } from "lucide-react";
+import { useLocale } from "next-intl";
 import React from "react";
 
 const reviews = [
@@ -18,6 +19,12 @@ const reviews = [
 //https://www.instagram.com/keybooks.my?igsh=djZ4a294eDR5YTRn
 
 const Review = () => {
+  const locale = useLocale();
+
+  const text =
+    locale === "en"
+      ? "More reviews on Instagram"
+      : "Lebih banyak ulasan di Instagram";
   return (
     <>
       <div className="bg-[#f3f4f7]">
@@ -40,7 +47,7 @@ const Review = () => {
             rel="noopener noreferrer"
             className="bg-white max-w-md mx-auto mt-6 px-4 py-2 rounded-2xl text-sm border border-gray-200 font-medium hover:bg-gray-100 flex items-center gap-2"
           >
-            Больше отзывов в Instagram
+            {text}{" "}
             <Instagram className="w-6 h-6 text-black" size={16} />
           </a>
         </button>

@@ -2,7 +2,9 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const ImageUploader: React.FC<{ onUploaded: (url: string, public_id: string) => void }> = ({ onUploaded }) => {
+const ImageUploader: React.FC<{
+  onUploaded: (url: string, public_id: string) => void;
+}> = ({ onUploaded }) => {
   const [uploading, setUploading] = useState(false);
   const t = useTranslations("All.responsesForm");
 
@@ -29,24 +31,23 @@ const ImageUploader: React.FC<{ onUploaded: (url: string, public_id: string) => 
     }
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: false });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    multiple: false,
+  });
 
   return (
     <div
       {...getRootProps()}
-      className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition ${
+      className={`w-full bg-gradient-to-r from-[#2a344c] to-[#222630] rounded-xl text-[13px] lg:text-[16px] text-center cursor-pointer transition -mt-6 ${
         isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"
       }`}
     >
       <input {...getInputProps()} />
       {uploading ? (
-        <p>
-          {t("loading")}
-        </p>
+        <p className="text-white p-2 rounded-lg">{t("loading")}</p>
       ) : (
-        <p>
-          {t("dropOrChoose")}
-        </p>
+        <p className="text-white p-2 rounded-lg">{t("dropOrChoose")}</p>
       )}
     </div>
   );

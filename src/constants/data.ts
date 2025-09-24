@@ -27,16 +27,28 @@ export interface Target {
   image: string;
 }
 export const coverDesigns: Target[] = [
-  { name: "Бело-голубой", image: "/bg/1.png" },
-  { name: "Золотой", image: "/bg/2.png" },
-  { name: "Розовый", image: "/bg/3.png" },
-  { name: "Тёмный", image: "/bg/4.png" },
+  { name: "Stage Mark", image: "/img/stage-mark.png" },
+  { name: "Rosé Garden", image: "/img/rose.png" },
+  { name: "Sage Bloom", image: "/img/sage.png" },
+  { name: "Golden Roses", image: "/img/golden.png" },
+  { name: "Midnight Roses", image: "/img/midnight.png" },
+  { name: "Ocean Tide", image: "/img/ocean.png" },
+  { name: "Baroque Bloom", image: "/img/bara.png" },
+  { name: "Dark Ocean", image: "/img/dark.png" },
+  { name: "Peace Whisper", image: "/img/peace.png" },
+  { name: "Other", image: "/img/ask.jpg" },
 ];
 export const MS_coverDesigns: Target[] = [
-  { name: "Biru Muda", image: "/bg/1.png" },
-  { name: "Emas", image: "/bg/2.png" },
-  { name: "Merah Jambu", image: "/bg/3.png" },
-  { name: "Gelap", image: "/bg/4.png" },
+  { name: "Tanda Peringkat", image: "/img/stage-mark.png" },
+  { name: "Taman Rosé", image: "/img/rose.png" },
+  { name: "Bunga Sage", image: "/img/sage.png" },
+  { name: "Mawar Emas", image: "/img/golden.png" },
+  { name: "Mawar Tengah Malam", image: "/img/midnight.png" },
+  { name: "Pasang Laut", image: "/img/ocean.png" },
+  { name: "Bunga Baroque", image: "/img/bara.png" },
+  { name: "Laut Gelap", image: "/img/dark.png" },
+  { name: "Bisikan Damai", image: "/img/peace.png" },
+  { name: "Lain-lain", image: "/img/ask.jpg" },
 ];
 
 export const whatsappNumber = "60165777740";

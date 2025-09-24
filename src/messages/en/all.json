@@ -83,10 +83,10 @@
     },
     "createBook": {
         "title": "Create Book",
-        "stepChooseTarget": "Choose Target",
+        "stepChooseTarget": "Choose a Character",
         "chooseRecipient": "Choose recipient",
-        "stepCreateBook": "Create Book",
-        "stepResponses": "Responses",
+        "stepCreateBook": "Choose Cover",
+        "stepResponses": "Answer Questions",
         "back": "← Back",
         "backToBook": "← Back to Create Book",
         "done": "Done"
@@ -99,6 +99,6 @@
         "ansPlaceholder": "Type your answer here...",
         "next": "Next",
         "loading": "Loading...",
-        "dropOrChoose": "Drag & drop images here or click to select"
+        "dropOrChoose": "Choose Image"
     }
 }

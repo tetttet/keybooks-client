@@ -9,6 +9,7 @@ interface Question {
 export async function loadQuestions(fileName: string): Promise<Question[]> {
   try {
     const res = await fetch(`${NEXT_URL}/questions/${fileName}`);
+    console.log("Fetching questions from:", `${NEXT_URL}/questions/${fileName}`);
     const text = await res.text();
     return text
       .split("\n")
