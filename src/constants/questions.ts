@@ -7,7 +7,7 @@ interface Question {
 // utils/loadQuestions.ts
 export async function loadQuestions(fileName: string): Promise<Question[]> {
   try {
-    const res = await fetch(`/questions/${fileName}`);
+    const res = await fetch(`${window.location.origin}/questions/${fileName}`);
     const text = await res.text();
     return text
       .split("\n")
@@ -18,7 +18,6 @@ export async function loadQuestions(fileName: string): Promise<Question[]> {
     return [];
   }
 }
-
 
 export interface PropsInterface {
   target:
