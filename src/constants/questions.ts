@@ -1,4 +1,5 @@
 import { QuestionAnswer } from "@/context/ResponsesContext";
+import { NEXT_URL } from "./data";
 
 interface Question {
   id: number;
@@ -7,7 +8,7 @@ interface Question {
 // utils/loadQuestions.ts
 export async function loadQuestions(fileName: string): Promise<Question[]> {
   try {
-    const res = await fetch(`${window.location.origin}/questions/${fileName}`);
+    const res = await fetch(`${NEXT_URL}/questions/${fileName}`);
     const text = await res.text();
     return text
       .split("\n")

@@ -41,3 +41,4 @@ export const MS_coverDesigns: Target[] = [
 
 export const whatsappNumber = "60165777740";
 export const API_URL = "https://keybooks-server.vercel.app/api";
+export const NEXT_URL = "https://keybooks-client.vercel.app";
