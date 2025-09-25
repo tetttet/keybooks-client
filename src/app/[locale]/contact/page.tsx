@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { MessageCircle, Mail, Send, Instagram } from "lucide-react";
+import { MessageCircle, Mail, Send, Instagram, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { whatsappNumber } from "@/constants/data";
@@ -14,7 +14,7 @@ const ContactPage = () => {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0f1720] to-[#18202d] flex items-center justify-center px-6 py-16">
-      <div className="max-w-3xl w-full bg-white/3 backdrop-blur-md rounded-2xl p-8">
+      <div className="max-w-4xl w-full bg-white/5 backdrop-blur-md rounded-2xl p-8 shadow-lg">
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -84,7 +84,7 @@ const ContactPage = () => {
               className="grid gap-6 sm:grid-cols-2"
             >
               <a
-                href="mailto:contact@keybooks.com"
+                href="mailto:kanglobalcompany@gmail.com"
                 className="flex items-center space-x-3 bg-white/10 hover:bg-white/20 p-4 rounded-lg transition"
               >
                 <Mail className="w-6 h-6 text-blue-400" />
@@ -92,7 +92,7 @@ const ContactPage = () => {
               </a>
 
               <a
-                href="https://t.me/keybooks"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 bg-white/10 hover:bg-white/20 p-4 rounded-lg transition"
@@ -102,7 +102,7 @@ const ContactPage = () => {
               </a>
 
               <a
-                href="https://instagram.com/keybooks"
+                href="https://www.instagram.com/keybooks.my/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-3 bg-white/10 hover:bg-white/20 p-4 rounded-lg transition"
@@ -121,6 +121,68 @@ const ContactPage = () => {
             </motion.div>
           </TabsContent>
         </Tabs>
+
+        {/* Terms & Refund Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-12 bg-white/10 rounded-2xl p-6 text-gray-200 space-y-6"
+        >
+          <h2 className="text-xl font-semibold text-white text-center">
+            {t("h2Title")}
+          </h2>
+
+          <p>
+            {t("t1")} <b>&quot;{t("compl")}&quot;</b> {t("t2")}{" "}
+            <b>{t("edit")}</b>.
+          </p>
+
+          <p>
+            {t("t3")}
+          </p>
+
+          <div>
+            <h3 className="font-semibold text-white">
+              {t("ref")}
+            </h3>
+            <p>
+              {t("req")}
+            </p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>
+                {t("verf")}
+              </li>
+              <li>
+                {t("calc")}
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white">
+              {t("t4")}
+            </h3>
+            <p>
+              {t("t5")}
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white">
+              {t("t6")}
+            </h3>
+            <div className="flex flex-col gap-2 mt-2">
+              <span className="flex items-center gap-2">
+                <Phone className="w-5 h-5 text-green-400" /> +60 165 7777 40
+              </span>
+              <span className="flex items-center gap-2">
+                <Mail className="w-5 h-5 text-blue-400" />
+                kanglobalcompany@gmail.com
+              </span>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </main>
   );
