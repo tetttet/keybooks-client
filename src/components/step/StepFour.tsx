@@ -31,7 +31,7 @@ const StepFour = () => {
         <h3 className="text-base font-medium mb-4">{t("header")}</h3>
 
         {/* Превью фото */}
-        <div className="relative w-full aspect-[4/3] bg-[#131927] rounded-xl shadow-md flex items-center justify-center overflow-hidden mb-6">
+        <div className="relative w-full aspect-[2/3] lg:aspect-[4/3] bg-[#131927] rounded-xl shadow-md flex items-center justify-center overflow-hidden mb-6">
           {image ? (
             <Image
               width={300}
