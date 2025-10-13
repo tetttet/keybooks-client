@@ -25,17 +25,26 @@ const Hero = () => {
     <section className="relative h-screen w-full flex items-start justify-center overflow-hidden">
       {/* Фон */}
       <Image
-        src="/bg/bg.png"
+        src="/bg/bg.jpeg"
         alt="Background"
         fill
-        className="object-cover object-[46%] sm:object-center"
+        className="object-cover object-[46%] hidden sm:block"
+        priority
+      />
+
+      {/* Мобильная версия */}
+      <Image
+        src="/bg/mobile.png"
+        alt="Background mobile"
+        fill
+        className="object-cover object-center sm:hidden"
         priority
       />
 
       {/* Контент */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 px-4 mt-40 md:mt-52">
         {/* Основной текст */}
-        <h1 className="max-w-[250px] lg:max-w-full text-xl md:text-3xl font-medium text-white">
+        <h1 className=" text-xl md:text-3xl font-medium text-white">
           {t("title")}{" "}
           <AnimatePresence mode="wait">
             <motion.span

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import OrderButton from "../ui/OrderButton";
+import { whatsappNumber } from "@/constants/data";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -86,23 +87,35 @@ const Header = () => {
               >
                 <Link href={`/${locale}/faq`}>{t("faq")}</Link>
               </li>
-              <li
+              {/* <li
                 onClick={() => setMenuOpen(false)}
                 className="hover:underline cursor-pointer"
               >
                 <Link href={`/${locale}/privacy`}>{t("privacy")}</Link>
-              </li>
+              </li> */}
               <li
                 onClick={() => setMenuOpen(false)}
                 className="hover:underline cursor-pointer"
               >
                 <Link href={`/${locale}/terms`}>{t("terms")}</Link>
               </li>
-              <li
+              {/* <li
                 onClick={() => setMenuOpen(false)}
                 className="hover:underline cursor-pointer"
               >
                 <Link href={`/${locale}/contact`}>{t("contact")}</Link>
+              </li> */}
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="hover:underline cursor-pointer"
+              >
+                <a
+                  href={"https://wa.me/" + whatsappNumber}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Order Now
+                </a>
               </li>
             </ul>
           </motion.div>

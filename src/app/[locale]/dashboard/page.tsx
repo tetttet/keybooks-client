@@ -50,7 +50,7 @@ const DashboardPage: React.FC = () => {
   }
 
   return (
-    <div className="py-20 bg-gradient-to-b from-[#080e20] to-[#0f1729] p-4 h-[90vh] overflow-auto">
+    <div className="py-20 pt-serif bg-gradient-to-b from-[#080e20] to-[#0f1729] p-4 h-[90vh] overflow-auto">
       {user.role === "admin" ? (
         <>
           <AdminCard username={user.username} logout={logout} />
@@ -70,7 +70,7 @@ const DashboardPage: React.FC = () => {
               {/* <div className="mt-4 p-4 ml-6 mr-6 bg-green-200 text-green-800 rounded-2xl">
               {upperText}
             </div> */}
-              <div className="flex p-6">
+              <div className="flex p-6 pt-serif">
                 <div
                   className="-mt-8 p-4 bg-red-200 text-red-800 rounded-2xl 
                 w-full sm:w-[78%] md:w-[74%] lg:w-[80%] xl:w-[55%]"

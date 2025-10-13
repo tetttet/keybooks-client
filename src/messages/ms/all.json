@@ -89,7 +89,8 @@
         "stepResponses": "Respon",
         "back": "← Kembali",
         "backToBook": "← Kembali ke Buat Buku",
-        "done": "Selesai"
+        "done": "Selesai",
+        "next": "Seterusnya"
     },
     "responsesForm": {
         "check": "Semak jawapan anda",

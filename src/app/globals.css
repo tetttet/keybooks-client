@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -159,11 +160,15 @@ h1, h2, h3 {
 }
 
 body {
-  font-family: "PT Serif", serif;
+  font-family: "Cinzel", serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "PT Serif", serif;
+  font-family: "Cinzel", serif;
+}
+
+.pt-serif {
+  font-family: "PT Serif", serif !important;
 }

@@ -19,7 +19,7 @@ interface UserCardProps {
 export const UserCard: React.FC<UserCardProps> = ({ user, logout }) => {
   const t = useTranslations("All.user.usercard");
   return (
-    <div className="flex p-6">
+    <div className="flex p-6 pt-serif">
       <Card className="bg-white text-black shadow-lg w-full max-w-md rounded-2xl">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">

@@ -89,7 +89,8 @@
         "stepResponses": "Answer Questions",
         "back": "← Back",
         "backToBook": "← Back to Create Book",
-        "done": "Done"
+        "done": "Done",
+        "next": "Next"
     },
     "responsesForm": {
         "check": "Check your answers",

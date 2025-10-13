@@ -52,7 +52,7 @@ const UserChooseTarget: React.FC<{
                   disabled={!target}
                   className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6"
                 >
-                  Далее
+                  {t("next")}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>

@@ -10,7 +10,7 @@ const HeroVideo = () => {
       {/* Видео */}
       <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] mb-8 overflow-hidden rounded-lg shadow-lg">
         <video
-          src="/demo.mp4"
+          src="/videos/hero.mp4"
           autoPlay
           loop
           muted
