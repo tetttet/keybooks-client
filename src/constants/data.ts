@@ -8,6 +8,7 @@ export const recipients = [
   "Brother",
   "Friend",
   "Colleague",
+  "Myself",
 ];
 
 export const MS_recipients = [
@@ -20,6 +21,7 @@ export const MS_recipients = [
   "Abang",
   "Kawan",
   "Rakan Sekerja",
+  "Diri Saya",
 ];
 
 export interface Target {

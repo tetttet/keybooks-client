@@ -63,6 +63,7 @@ const UserCreateResponseCard: React.FC<{
     const fetch = async () => {
       setLoading(true);
       const file = `${target}.txt`;
+      console.log("Loading questions from file:", file);
       const loaded = await loadQuestions(file);
       setQuestions(loaded);
       setLoading(false);
