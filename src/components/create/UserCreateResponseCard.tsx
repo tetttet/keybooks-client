@@ -8,7 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { API_URL } from "@/constants/data";
 import { loadQuestions } from "@/constants/questions";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import StepContainer from "../ui/StepContainer";
 import { useTranslations } from "next-intl";
 import { Textarea } from "../ui/textarea";
 import Image from "next/image";
@@ -132,6 +131,39 @@ const UserCreateResponseCard: React.FC<{
 
   if (loading) return <div>Загрузка вопросов...</div>;
 
+  // --- Pagination helpers ---
+  const total = questions.length;
+  const setPage = (index: number) => {
+    if (index < 0) index = 0;
+    if (index > total - 1) index = total - 1;
+    setCurrentStep(index);
+    setShowSummary(false);
+    // optionally focus input or scroll into view
+    const el = document.querySelector("textarea");
+    if (el) (el as HTMLElement).focus();
+  };
+
+  const buildPageRange = (current: number, total: number, delta = 2) => {
+    // returns an array of items: numbers and '...' strings
+    const range: Array<number | string> = [];
+    const left = Math.max(1, current + 1 - delta);
+    const right = Math.min(total, current + 1 + delta);
+
+    if (left > 1) {
+      range.push(1);
+      if (left > 2) range.push("...");
+    }
+
+    for (let i = left; i <= right; i++) range.push(i);
+
+    if (right < total) {
+      if (right < total - 1) range.push("...");
+      range.push(total);
+    }
+
+    return range;
+  };
+
   if (showSummary) {
     return (
       <Card>
@@ -182,7 +214,10 @@ const UserCreateResponseCard: React.FC<{
             <Button variant="outline" onClick={handleBack}>
               <ArrowLeft className="w-4 h-4 mr-1" /> {t("back")}
             </Button>
-            <Button onClick={handleSubmit} className="bg-gradient-to-r from-[#2a344c] to-[#222630]">
+            <Button
+              onClick={handleSubmit}
+              className="bg-gradient-to-r from-[#2a344c] to-[#222630]"
+            >
               {t("saveAndDeduct")} <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
@@ -193,6 +228,8 @@ const UserCreateResponseCard: React.FC<{
 
   const q = questions[currentStep];
   const currentAnswer = answers.find((a) => a.id === q.id);
+
+  const pageRange = buildPageRange(currentStep, total, 2); // delta = 2 => shows +-2 pages
 
   return (
     <Card>
@@ -262,7 +299,7 @@ const UserCreateResponseCard: React.FC<{
                   <Image
                     src={currentAnswer.image_url}
                     alt="preview"
-                   className="w-36 h-auto rounded"
+                    className="w-36 h-auto rounded"
                     width={160}
                     height={160}
                   />
@@ -277,18 +314,103 @@ const UserCreateResponseCard: React.FC<{
             </div>
           </div>
 
-          <div className="flex justify-between mt-4">
-            <Button
-              variant="outline"
-              onClick={handleBack}
-              disabled={currentStep === 0 && !showSummary}
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" /> {t("back")}
-            </Button>
-            <Button onClick={handleNext} className="bg-gradient-to-r from-[#2a344c] to-[#222630]">
-              {currentStep === questions.length - 1 ? t("check") : t("next")}
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+          {/* ===== pagination strip (centered bottom) ===== */}
+          <div className="w-full flex justify-center mt-4">
+            <nav className="bg-white px-3 py-2 rounded-xl shadow-inner flex items-center space-x-3 max-w-[900px] w-full justify-between">
+              {/* Left quick controls */}
+              <div className="flex items-center space-x-2">
+                {/* <button
+                  aria-label="first"
+                  onClick={() => setPage(0)}
+                  className="px-2 py-1 rounded-md text-sm border hover:shadow"
+                  disabled={currentStep === 0}
+                >
+                  ⏮
+                </button> */}
+                <Button
+                  variant="outline"
+                  onClick={handleBack}
+                  disabled={currentStep === 0 && !showSummary}
+                >
+                  <ArrowLeft className="w-4 h-4 mr-1" /> {t("back")}
+                </Button>
+              </div>
+
+              {/* Page numbers (scrollable on small screens) */}
+              <div className="flex-1 flex justify-center">
+                <ul className="flex items-center gap-2 overflow-x-auto no-scrollbar px-2">
+                  {pageRange.map((p, i) =>
+                    typeof p === "string" ? (
+                      <li
+                        key={`sep-${i}`}
+                        className="px-2 text-sm text-gray-500"
+                      >
+                        {p}
+                      </li>
+                    ) : (
+                      <li key={`pg-${p}`}>
+                        <button
+                          onClick={() => setPage(p - 1)}
+                          aria-current={
+                            p - 1 === currentStep ? "page" : undefined
+                          }
+                          className={`px-3 py-1 rounded-md text-sm border ${
+                            p - 1 === currentStep
+                              ? "bg-[#2a344c] text-white"
+                              : "bg-white text-gray-800"
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
+
+              {/* Right quick controls + jump */}
+              <div className="flex items-center space-x-2">
+                <Button
+                  onClick={handleNext}
+                  className="bg-gradient-to-r from-[#2a344c] to-[#222630]"
+                >
+                  {currentStep === questions.length - 1
+                    ? t("check")
+                    : t("next")}
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+                {/* <button
+                  aria-label="last"
+                  onClick={() => setPage(total - 1)}
+                  className="px-2 py-1 rounded-md text-sm border hover:shadow"
+                  disabled={currentStep >= total - 1}
+                >
+                  ⏭
+                </button> */}
+
+                {/* compact jump form */}
+                {/* <div className="flex items-center border rounded-md px-2 py-1 bg-white">
+                  <label htmlFor="jump" className="text-xs mr-2">
+                    Go
+                  </label>
+                  <input
+                    id="jump"
+                    type="number"
+                    min={1}
+                    max={total}
+                    defaultValue={currentStep + 1}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        const v = Number((e.target as HTMLInputElement).value);
+                        if (v && v >= 1 && v <= total) setPage(v - 1);
+                      }
+                    }}
+                    className="w-14 text-sm text-right outline-none"
+                    aria-label="jump to page"
+                  />
+                </div> */}
+              </div>
+            </nav>
           </div>
         </div>
       </CardContent>

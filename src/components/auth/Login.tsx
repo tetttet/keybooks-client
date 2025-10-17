@@ -37,7 +37,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row lg:h-screen">
+    <div className="flex flex-col sm:flex-row lg:h-screen pt-serif">
       {/* Левая часть - форма */}
       <div className="flex flex-col justify-center items-center w-full sm:w-1/2 bg-[#0d2523] p-8 sm:p-12">
         <h1 className="text-3xl font-bold mb-6 text-white text-center mt-16 lg:mt-0">
