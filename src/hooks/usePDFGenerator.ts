@@ -29,65 +29,27 @@ export const usePDFGenerator = () => {
 
   // Загрузка изображения в data URL
   const loadImageToDataUrl = async (
-    src: string,
+    url: string,
     timeout = 8000
   ): Promise<string | null> => {
-    return new Promise((resolve) => {
-      let finished = false;
-      const img = new window.Image();
-      img.crossOrigin = "anonymous";
-      img.referrerPolicy = "no-referrer";
+    try {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), timeout);
 
-      const cleanUp = () => {
-        img.onload = null;
-        img.onerror = null;
-        try {
-          img.src = "";
-        } catch {}
-      };
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(id);
+      if (!res.ok) return null;
 
-      const timer = window.setTimeout(() => {
-        if (finished) return;
-        finished = true;
-        cleanUp();
-        resolve(null);
-      }, timeout);
-
-      img.onload = () => {
-        if (finished) return;
-        finished = true;
-        window.clearTimeout(timer);
-        const canvas = document.createElement("canvas");
-        canvas.width = img.naturalWidth || img.width;
-        canvas.height = img.naturalHeight || img.height;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) {
-          cleanUp();
-          resolve(null);
-          return;
-        }
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL("image/png");
-        cleanUp();
-        resolve(dataUrl);
-      };
-
-      img.onerror = () => {
-        if (finished) return;
-        finished = true;
-        window.clearTimeout(timer);
-        cleanUp();
-        resolve(null);
-      };
-
-      try {
-        img.src = src;
-      } catch {
-        window.clearTimeout(timer);
-        cleanUp();
-        resolve(null);
-      }
-    });
+      const blob = await res.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(blob);
+      });
+    } catch {
+      return null;
+    }
   };
 
   // Загрузка TTF и регистрация шрифта
