@@ -1,28 +1,18 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useBooks } from "@/context/BooksContext";
-import jsPDF from "jspdf";
 import { useUserResponses, Question } from "@/context/UserResponsesContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { User } from "@/context/AuthContext";
 import { API_URL } from "@/constants/data";
 import Image from "next/image";
-
-type PDFProgress = {
-  visible: boolean;
-  percent: number;
-  processed: number;
-  total: number;
-  etaSeconds: number | null;
-  statusText?: string;
-  canceled?: boolean;
-};
+import { usePDFGenerator } from "@/hooks/usePDFGenerator";
 
 const AdminGallery = () => {
   const [users, setUsers] = useState<User[]>([]);
   const { getBooks, fetchBooks } = useBooks();
-  const { responses, fetchResponses } = useUserResponses();
+  const { fetchResponses, getResponsesForBook } = useUserResponses();
   const [expandedUsers, setExpandedUsers] = useState<Record<string, boolean>>(
     {}
   );
@@ -31,21 +21,10 @@ const AdminGallery = () => {
   );
   const [loading, setLoading] = useState(true);
 
-  // progress state
-  const [pdfProgress, setPdfProgress] = useState<PDFProgress>({
-    visible: false,
-    percent: 0,
-    processed: 0,
-    total: 0,
-    etaSeconds: null,
-    statusText: "",
-    canceled: false,
-  });
+  // В хук usePDFGenerator теперь НЕ возвращается setPdfProgress
+  const { pdfProgress, generatePDF, cancelPdf } = usePDFGenerator();
 
-  // cancellation flag
-  const cancelRef = useRef({ canceled: false });
-
-  // --- Загрузка всех пользователей ---
+  // --- Загрузка пользователей ---
   const fetchUsers = useCallback(async () => {
     try {
       const res = await fetch(`${API_URL}/users/all`);
@@ -65,7 +44,7 @@ const AdminGallery = () => {
     loadAllData();
   }, [fetchUsers]);
 
-  // --- Загрузка книг всех пользователей (один раз, параллельно) ---
+  // --- Загрузка книг пользователей ---
   useEffect(() => {
     const loadBooks = async () => {
       if (users.length === 0) return;
@@ -76,7 +55,7 @@ const AdminGallery = () => {
     loadBooks();
   }, [users, fetchBooks]);
 
-  // --- Загрузка ответов всех книг всех пользователей ---
+  // --- Загрузка ответов ---
   useEffect(() => {
     const loadResponses = async () => {
       if (users.length === 0) return;
@@ -89,7 +68,7 @@ const AdminGallery = () => {
     loadResponses();
   }, [users, getBooks, fetchResponses]);
 
-  // --- Фильтрация пользователей без админов ---
+  // --- Пользователи без админов ---
   const filteredUsers = users
     .filter((u) => u.role !== "admin")
     .sort((a, b) => a.username.localeCompare(b.username));
@@ -101,7 +80,7 @@ const AdminGallery = () => {
   const toggleBook = (bookId: string) =>
     setExpandedBooks((prev) => ({ ...prev, [bookId]: !prev[bookId] }));
 
-  // helper: формат ETA seconds -> mm:ss
+  // helper ETA format
   const formatSeconds = (s: number | null) => {
     if (s === null) return "--:--";
     const sec = Math.max(0, Math.round(s));
@@ -110,255 +89,6 @@ const AdminGallery = () => {
       .padStart(2, "0");
     const ss = (sec % 60).toString().padStart(2, "0");
     return `${m}:${ss}`;
-  };
-
-  // helper: load image with timeout, return dataURL or null
-  const loadImageToDataUrl = (
-    src: string,
-    timeout = 8000
-  ): Promise<string | null> => {
-    return new Promise((resolve) => {
-      let done = false;
-      const img = new window.Image();
-      img.crossOrigin = "anonymous";
-      img.referrerPolicy = "no-referrer";
-      img.src = src;
-
-      const timer = window.setTimeout(() => {
-        if (done) return;
-        done = true;
-        resolve(null); // timeout -> treat as missing
-      }, timeout);
-
-      img.onload = () => {
-        if (done) return;
-        done = true;
-        window.clearTimeout(timer);
-        try {
-          const canvas = document.createElement("canvas");
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext("2d")!;
-          ctx.drawImage(img, 0, 0);
-          const imgData = canvas.toDataURL("image/png");
-          resolve(imgData);
-        } catch (err) {
-          console.error("Canvas conversion failed", err);
-          resolve(null);
-        }
-      };
-
-      img.onerror = () => {
-        if (done) return;
-        done = true;
-        window.clearTimeout(timer);
-        resolve(null);
-      };
-    });
-  };
-
-  // --- Генерация PDF с прогресс-баром и отменой ---
-  const generatePDF = async (bookId: string) => {
-    cancelRef.current = { canceled: false };
-    setPdfProgress({
-      visible: true,
-      percent: 0,
-      processed: 0,
-      total: 0,
-      etaSeconds: null,
-      statusText: "Подсчитываем элементы...",
-      canceled: false,
-    });
-
-    // collect responses for this book
-    const bookResponses = responses.filter((r) => r.book_id === bookId);
-    // guard
-    if (!bookResponses.length) {
-      setPdfProgress((p) => ({
-        ...p,
-        statusText: "Нет ответов для этого тома",
-        visible: true,
-      }));
-      setTimeout(() => setPdfProgress((p) => ({ ...p, visible: false })), 1600);
-      return;
-    }
-
-    // compute total steps: target string + each question text + each answer text + each image
-    let totalSteps = 0;
-    for (const r of bookResponses) {
-      totalSteps += 1; // target line
-      for (const q of r.answers.questions) {
-        totalSteps += 2; // question + answer
-        if (q.image_url) totalSteps += 1; // image is another step
-      }
-      totalSteps += 1; // small gap/separator
-    }
-
-    setPdfProgress((p) => ({
-      ...p,
-      total: totalSteps,
-      statusText: "Генерация PDF...",
-      processed: 0,
-      percent: 0,
-    }));
-
-    const doc = new jsPDF("p", "mm", "a4");
-    const pageWidth = 190;
-    let y = 10;
-
-    const startTime = performance.now();
-    let processed = 0;
-
-    const updateProgress = (increment = 1, statusText?: string) => {
-      processed += increment;
-      const now = performance.now();
-      const elapsedSec = (now - startTime) / 1000;
-      const avgPerStep = processed > 0 ? elapsedSec / processed : 0;
-      const remaining = Math.max(0, totalSteps - processed);
-      const eta = remaining * avgPerStep;
-      const percent = Math.min(100, Math.round((processed / totalSteps) * 100));
-      setPdfProgress({
-        visible: true,
-        percent,
-        processed,
-        total: totalSteps,
-        etaSeconds: isFinite(eta) ? eta : null,
-        statusText: statusText ?? "Генерация PDF...",
-        canceled: cancelRef.current.canceled,
-      });
-    };
-
-    try {
-      // loop responses synchronously to allow progress and cancellation
-      for (const r of bookResponses) {
-        if (cancelRef.current.canceled) break;
-
-        // target
-        doc.setFontSize(12);
-        const targetLines = doc.splitTextToSize(
-          `Ответ: ${r.target}`,
-          pageWidth
-        );
-        doc.text(targetLines, 10, y);
-        y += targetLines.length * 6 + 2;
-        updateProgress(1);
-
-        for (const q of r.answers.questions) {
-          if (cancelRef.current.canceled) break;
-
-          doc.setFontSize(10);
-
-          // question
-          const questionLines = doc.splitTextToSize(
-            `Вопрос: ${q.question}`,
-            pageWidth
-          );
-          if (y + questionLines.length * 5 > 290) {
-            doc.addPage();
-            y = 10;
-          }
-          doc.text(questionLines, 10, y);
-          y += questionLines.length * 5 + 2;
-          updateProgress(1);
-
-          if (cancelRef.current.canceled) break;
-
-          // answer
-          const answerLines = doc.splitTextToSize(
-            `Ответ: ${q.answer}`,
-            pageWidth
-          );
-          if (y + answerLines.length * 5 > 290) {
-            doc.addPage();
-            y = 10;
-          }
-          doc.text(answerLines, 10, y);
-          y += answerLines.length * 5 + 2;
-          updateProgress(1);
-
-          if (q.image_url) {
-            if (cancelRef.current.canceled) break;
-            setPdfProgress((p) => ({
-              ...p,
-              statusText: "Загрузка изображения...",
-            }));
-            // attempt to load image -> dataURL (with timeout)
-            const imgData = await loadImageToDataUrl(q.image_url);
-
-            if (cancelRef.current.canceled) break;
-
-            if (imgData) {
-              try {
-                const imgProps = doc.getImageProperties(imgData);
-                const pdfWidth = 90;
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-                if (y + pdfHeight > 290) {
-                  doc.addPage();
-                  y = 10;
-                }
-                doc.addImage(imgData, "PNG", 10, y, pdfWidth, pdfHeight);
-                y += pdfHeight + 5;
-              } catch (err) {
-                console.error("Ошибка при вставке картинки в PDF:", err);
-                // ignore, count step anyway
-              }
-            } else {
-              // couldn't load image -> skip but count step
-              console.warn(
-                "Не удалось загрузить изображение или оно таймаутнуло:",
-                q.image_url
-              );
-            }
-            updateProgress(1);
-            setPdfProgress((p) => ({ ...p, statusText: "Генерация PDF..." }));
-          }
-        }
-
-        y += 5;
-        if (y > 270) {
-          doc.addPage();
-          y = 10;
-        }
-      }
-
-      if (cancelRef.current.canceled) {
-        setPdfProgress((p) => ({
-          ...p,
-          statusText: "Отменено пользователем",
-          canceled: true,
-        }));
-        // do not save file when cancelled
-        return;
-      }
-
-      // finalize
-      setPdfProgress((p) => ({ ...p, statusText: "Подготовка файла..." }));
-      // small delay to ensure UI updated
-      await new Promise((res) => setTimeout(res, 120));
-      doc.save(`book_${bookId}_responses.pdf`);
-      setPdfProgress((p) => ({
-        ...p,
-        statusText: "Готово",
-        percent: 100,
-        etaSeconds: 0,
-      }));
-      // Hide progress after a short delay
-      setTimeout(() => {
-        setPdfProgress((p) => ({ ...p, visible: false }));
-      }, 1200);
-    } catch (err) {
-      console.error("Ошибка при генерации PDF:", err);
-      setPdfProgress((p) => ({
-        ...p,
-        statusText: "Ошибка при генерации PDF",
-        visible: true,
-      }));
-    }
-  };
-
-  const cancelPdf = () => {
-    cancelRef.current.canceled = true;
-    setPdfProgress((p) => ({ ...p, statusText: "Отмена...", canceled: true }));
   };
 
   // --- Состояние загрузки ---
@@ -386,7 +116,7 @@ const AdminGallery = () => {
   // --- Основной вывод ---
   return (
     <div className="space-y-6 p-6">
-      {/* Прогресс-модал (фиксированный центр) */}
+      {/* Модал прогресса PDF */}
       {pdfProgress.visible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
           <div className="pointer-events-auto w-full max-w-lg mx-4">
@@ -411,9 +141,10 @@ const AdminGallery = () => {
                 <div className="w-full h-3 bg-gray-200 rounded overflow-hidden">
                   <div
                     style={{ width: `${pdfProgress.percent}%` }}
-                    className="h-full bg-gradient-to-r from-blue-500 to-indigo-600"
+                    className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300"
                   />
                 </div>
+
                 <div className="mt-2 flex items-center justify-between">
                   <div className="text-xs text-gray-600">
                     {pdfProgress.canceled
@@ -431,7 +162,8 @@ const AdminGallery = () => {
                     )}
                     <button
                       onClick={() =>
-                        setPdfProgress((p) => ({ ...p, visible: false }))
+                        // просто скрываем визуально, но не сбрасываем состояние хука
+                        (pdfProgress.visible = false)
                       }
                       className="text-xs px-3 py-1 bg-gray-100 text-gray-800 rounded hover:bg-gray-200"
                     >
@@ -463,9 +195,7 @@ const AdminGallery = () => {
               <div className="p-4 space-y-4">
                 {userBooks.length ? (
                   userBooks.map((book) => {
-                    const bookResponses = responses.filter(
-                      (r) => r.book_id === book.id
-                    );
+                    const bookResponses = getResponsesForBook(book.id);
 
                     return (
                       <div
@@ -480,7 +210,7 @@ const AdminGallery = () => {
                             {book.title} — {book.author}
                           </button>
                           <button
-                            onClick={() => generatePDF(book.id)}
+                            onClick={() => generatePDF(book.id, bookResponses)}
                             className="px-4 py-1 mr-4 bg-blue-600 whitespace-nowrap text-white rounded hover:bg-blue-700"
                           >
                             Скачать PDF

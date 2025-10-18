@@ -34,7 +34,8 @@
             "friend": "Friend",
             "husband": "Husband",
             "wife": "Wife",
-            "parents": "Parents"
+            "parents": "Parents",
+            "myself": "Myself"
         },
         "addPhoto": "Add Photo",
         "add": "Add",

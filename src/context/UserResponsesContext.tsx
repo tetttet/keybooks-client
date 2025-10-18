@@ -29,7 +29,10 @@ export interface UserResponse {
 }
 
 interface UserResponsesContextType {
+  /** Плоский массив всех ответов (для совместимости с текущим кодом) */
   responses: UserResponse[];
+  /** Получить ответы конкретной книги */
+  getResponsesForBook: (book_id: string) => UserResponse[];
   loading: boolean;
   error: string | null;
   fetchResponses: (user_id: string, book_id: string) => Promise<void>;
@@ -55,11 +58,24 @@ export const UserResponsesProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [responses, setResponses] = useState<UserResponse[]>([]);
+  // внутренне храним объекты по book_id
+  const [responsesByBook, setResponsesByBook] = useState<
+    Record<string, UserResponse[]>
+  >({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // получить все ответы по user + book
+  // helper: вернуть плоский массив для совместимости
+  const flatResponses = Object.values(responsesByBook).flat();
+
+  const getResponsesForBook = useCallback(
+    (book_id: string) => {
+      return responsesByBook[book_id] || [];
+    },
+    [responsesByBook]
+  );
+
+  // получить все ответы по user + book и положить их в responsesByBook[book_id]
   const fetchResponses = useCallback(
     async (user_id: string, book_id: string) => {
       try {
@@ -70,7 +86,16 @@ export const UserResponsesProvider = ({
         );
         if (!res.ok) throw new Error("Failed to fetch responses");
         const data = await res.json();
-        setResponses(data);
+
+        // API может возвращать либо массив, либо { responses: [] }
+        const arr: UserResponse[] = Array.isArray(data)
+          ? data
+          : data?.responses ?? [];
+
+        setResponsesByBook((prev) => ({
+          ...prev,
+          [book_id]: arr,
+        }));
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -84,7 +109,7 @@ export const UserResponsesProvider = ({
     []
   );
 
-  // создать новый response
+  // создать новый response и добавить в соответствующий bucket
   const createResponse = useCallback(
     async (
       user_id: string,
@@ -101,7 +126,15 @@ export const UserResponsesProvider = ({
         });
         if (!res.ok) throw new Error("Failed to create response");
         const data: UserResponse = await res.json();
-        setResponses((prev) => [...prev, data]);
+
+        setResponsesByBook((prev) => {
+          const prevArr = prev[book_id] ?? [];
+          return {
+            ...prev,
+            [book_id]: [...prevArr, data],
+          };
+        });
+
         return data;
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -115,7 +148,7 @@ export const UserResponsesProvider = ({
     []
   );
 
-  // обновить response
+  // обновить response (ищем по id внутри всех buckets) и заменяем его
   const updateResponse = useCallback(
     async (
       id: string,
@@ -130,7 +163,25 @@ export const UserResponsesProvider = ({
         });
         if (!res.ok) throw new Error("Failed to update response");
         const updated: UserResponse = await res.json();
-        setResponses((prev) => prev.map((r) => (r.id === id ? updated : r)));
+
+        setResponsesByBook((prev) => {
+          // найдём bucket, где лежит этот id (если не знаем — пробежим по всем)
+          const next: Record<string, UserResponse[]> = {};
+          for (const [bookId, arr] of Object.entries(prev)) {
+            next[bookId] = arr.map((r) => (r.id === id ? updated : r));
+          }
+          // если ни в одном не было — возможно новая (на всякий случай добавим)
+          const exists = Object.values(next).some((arr) =>
+            arr.some((r) => r.id === id)
+          );
+          if (!exists) {
+            const bookId = updated.book_id;
+            const prevArr = prev[bookId] ?? [];
+            next[bookId] = [...prevArr, updated];
+          }
+          return next;
+        });
+
         return updated;
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -144,7 +195,7 @@ export const UserResponsesProvider = ({
     []
   );
 
-  // удалить response
+  // удалить response (по id)
   const deleteResponse = useCallback(async (id: string) => {
     try {
       setError(null);
@@ -152,7 +203,15 @@ export const UserResponsesProvider = ({
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete response");
-      setResponses((prev) => prev.filter((r) => r.id !== id));
+
+      setResponsesByBook((prev) => {
+        const next: Record<string, UserResponse[]> = {};
+        for (const [bookId, arr] of Object.entries(prev)) {
+          next[bookId] = arr.filter((r) => r.id !== id);
+        }
+        return next;
+      });
+
       return true;
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -167,7 +226,9 @@ export const UserResponsesProvider = ({
   return (
     <UserResponsesContext.Provider
       value={{
-        responses,
+        // плоский массив для совместимости — УДОБЕН, но UI должен лучше использовать getResponsesForBook
+        responses: flatResponses,
+        getResponsesForBook,
         loading,
         error,
         fetchResponses,
